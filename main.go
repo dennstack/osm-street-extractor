@@ -61,6 +61,15 @@ func addressFromTags(tags []Tag) Address {
 	return Address{Street: street, City: city, Postcode: postcode}
 }
 
+func contains(arr []Address, a Address) bool {
+	for _, e := range arr {
+		if e == a {
+			return true
+		}
+	}
+	return false
+}
+
 func convertOSMFile(url, csvFileName string) error {
 	csvFile, err := os.Create(csvFileName)
 	if err != nil {
@@ -84,6 +93,8 @@ func convertOSMFile(url, csvFileName string) error {
 	bzipReader := bzip2.NewReader(response.Body)
 	xmlDecoder := xml.NewDecoder(bzipReader)
 
+	addresses := []Address{}
+
 	// https://eli.thegreenplace.net/2019/faster-xml-stream-processing-in-go/
 	for {
 		tok, err := xmlDecoder.Token()
@@ -104,9 +115,12 @@ func convertOSMFile(url, csvFileName string) error {
 				}
 				if hasAddress(node.Tags) {
 					address := addressFromTags(node.Tags)
-					err = csvWriter.Write([]string{address.Street, address.Postcode, address.City})
-					if err != nil {
-						return err
+					if !contains(addresses, address) {
+						addresses = append(addresses, address)
+						err = csvWriter.Write([]string{address.Street, address.Postcode, address.City})
+						if err != nil {
+							return err
+						}
 					}
 				}
 			}
