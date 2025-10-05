@@ -1,12 +1,10 @@
-package csv
+package osm
 
 import (
 	"encoding/csv"
 	"fmt"
 	"os"
 	"time"
-
-	"github.com/dschila/osm-street-extractor/internal/models"
 )
 
 func CreateCSVWriter() (*csv.Writer, error) {
@@ -21,7 +19,7 @@ func CreateCSVWriter() (*csv.Writer, error) {
 	return writer, nil
 }
 
-func WriteAddress(stream <-chan models.Address, writer *csv.Writer) {
+func WriteAddress(stream <-chan Address, writer *csv.Writer) {
 	for addr := range stream {
 		err := writer.Write([]string{addr.Street, addr.Postcode, addr.City})
 		if err != nil {
