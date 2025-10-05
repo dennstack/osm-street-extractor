@@ -1,8 +1,10 @@
 = osm-street-extractor
 
+IMPORTANT: This tool is will be only maintained. No new features will be added. Please check out the advanced version at https://github.com/dennstack/addrgo
+
 == Description
 
-The osm-street-extractor is a small tool that allows you to convert OpenStreetMap (OSM) files of any German state into CSV format.
+The osm-street-extractor is a small tool that allows you to convert OpenStreetMap (OSM) files of any German state into CSV format. Feel free to use and modify it as needed.
 
 == Installation
 
@@ -11,7 +13,7 @@ Ensure you have Go installed on your system. For installation instructions, refe
 Clone the osm-street-extractor repository:
 
 [source,shell]
-$ git clone https://github.com/dschila/osm-street-extractor.git
+$ git clone https://github.com/dennstack/osm-street-extractor.git
 
 Change to the project directory:
 
@@ -21,7 +23,7 @@ $ cd osm-street-extractor
 Build the executable:
 
 [source,shell]
-$ go build
+$ go build .
 
 Run the tool:
 
@@ -42,7 +44,7 @@ The tool will convert the OSM files into CSV format and save the results in the 
 
 == Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue on the project's GitHub repository: https://github.com/dschila/osm-street-extractor/issues
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue on the project's GitHub repository: https://github.com/dennstack/osm-street-extractor/issues
 
 If you'd like to contribute code, follow these steps:
 
