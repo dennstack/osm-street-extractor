@@ -1,6 +1,6 @@
 = osm-street-extractor
 
-IMPORTANT: This tool is will be only maintained. No new features will be added. Please check out the advanced version at https://github.com/dennstack/addrgo
+IMPORTANT: This tool will be only maintained. No new features will be added. Please check out the advanced version at https://github.com/dennstack/addrgo
 
 == Description
 
